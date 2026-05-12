@@ -256,6 +256,106 @@
     border-top: 1px solid var(--border);
   }
 
+  /* ── SYNTHESIS (종합 의견) ── */
+  .synthesis-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .synthesis-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.35rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .synthesis-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 3px 0 0 3px;
+  }
+  .synthesis-card.t-high::before { background: linear-gradient(180deg, #a78bfa, #6c7fff); }
+  .synthesis-card.t-mid::before { background: linear-gradient(180deg, #34d399, #2dd4bf); }
+  .synthesis-card.t-low::before { background: linear-gradient(180deg, #60a5fa, #38bdf8); }
+  .synthesis-card.t-tech::before { background: linear-gradient(180deg, #f87171, #fbbf24); }
+  .synthesis-card-head {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    padding-left: 2px;
+  }
+  .synthesis-card-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'DM Mono', monospace;
+    color: var(--text3);
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin-bottom: 12px;
+  }
+  .synthesis-body {
+    font-size: 12.5px;
+    color: var(--text2);
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .synthesis-body ul {
+    margin: 8px 0 0 1.1rem;
+    padding: 0;
+  }
+  .synthesis-body li { margin-bottom: 5px; }
+  .synthesis-sub {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin: 14px 0 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .synthesis-ol {
+    margin: 0;
+    padding-left: 1.15rem;
+    font-size: 12.5px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .synthesis-ol li { margin-bottom: 4px; }
+  @media (max-width: 900px) {
+    .synthesis-wrap { grid-template-columns: 1fr; }
+  }
+
+  /* ── SYNTHESIS VERDICT (종합 의견 요약) ── */
+  .synthesis-verdict-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.65rem 1.4rem;
+  }
+  .synthesis-verdict-p {
+    font-size: 13px;
+    line-height: 1.78;
+    color: var(--text2);
+    margin: 0 0 1.2rem;
+    padding-left: 14px;
+    border-left: 3px solid var(--border2);
+  }
+  .synthesis-verdict-p:last-child { margin-bottom: 0; }
+  .synthesis-verdict-p.v-high { border-left-color: #a78bfa; }
+  .synthesis-verdict-p.v-mid { border-left-color: #34d399; }
+  .synthesis-verdict-p.v-low { border-left-color: #60a5fa; }
+
   /* ── DETAIL TABLE ── */
   .table-wrap {
     overflow-x: auto;
@@ -2230,6 +2330,121 @@
 </div>
 <div class="comments-list" id="list_Volcano_Blaster"></div>
 </div>
+  </section>
+
+  <!-- SYNTHESIS: 종합 분석 -->
+  <section class="section" id="synthesis-opinion-section">
+    <div class="section-head">
+      <h2>종합 분석</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="synthesis-wrap">
+      <article class="synthesis-card t-high">
+        <div class="synthesis-card-head">1. 고레벨 적합 콘텐츠 (GT ~ Leaders / MAG · MGT 계열)</div>
+        <span class="synthesis-card-tag">상대 참여율 · 고레벨 편중</span>
+        <div class="synthesis-body">
+          Activity 기준 분석에서 상대 참여율 기준으로 고레벨에서 눈에 띄게 높은 참여율을 보인 콘텐츠는 아래와 같습니다.
+          <ul>
+            <li>문법, 듣기, 추론, 쓰기, 말하기 유형의 문제가 복합적으로 제시되며</li>
+            <li>UI 구조가 단순하지 않고</li>
+            <li>사용자가 가이드와 동작 흐름을 스스로 유추하며 진행해야 하는 특징을 가지고 있습니다.</li>
+          </ul>
+          따라서 자기주도적 탐색과 복합 사고가 가능한 고레벨 학습자에게 적합한 콘텐츠로 판단됩니다.
+        </div>
+        <div class="synthesis-sub">주요 콘텐츠</div>
+        <ol class="synthesis-ol">
+          <li>Magic Word World</li>
+          <li>Emoji Story Chain</li>
+          <li>Voice Actor</li>
+          <li>Treasure Hunter</li>
+          <li>Magic Fortune English</li>
+        </ol>
+      </article>
+
+      <article class="synthesis-card t-mid">
+        <div class="synthesis-card-head">2. 중간레벨 적합 콘텐츠 (ECP 후반 ~ GT / Honors 계열)</div>
+        <span class="synthesis-card-tag">참여 안정성 · 중간레벨</span>
+        <div class="synthesis-body">
+          Activity 기준 분석에서 상대 참여율이 대부분의 레벨에서 고르게 나타난 콘텐츠 중, 특히 중간레벨에서 안정적인 사용 패턴을 보인 콘텐츠는 아래와 같습니다.
+          <ul>
+            <li>동작 프로세스가 비교적 단순하고</li>
+            <li>UI 디자인이 직관적이며</li>
+            <li>문제 난이도가 과도하게 높지 않아 다양한 레벨에서 무난하게 접근 가능한 특징을 보입니다.</li>
+          </ul>
+          특히 중간레벨 학습자의 참여 안정성과 반복 사용 측면에서 적합한 콘텐츠로 판단됩니다.
+        </div>
+        <div class="synthesis-sub">주요 콘텐츠</div>
+        <ol class="synthesis-ol">
+          <li>Escape the Mystery Room</li>
+          <li>Sell It!</li>
+          <li>Story Builder</li>
+          <li>This is Me!</li>
+          <li>Birthday Invitation Maker</li>
+          <li>News Creator</li>
+        </ol>
+      </article>
+
+      <article class="synthesis-card t-low">
+        <div class="synthesis-card-head">3. 저레벨 적합 콘텐츠 (ECP 계열)</div>
+        <span class="synthesis-card-tag">ECP · 상대 참여율</span>
+        <div class="synthesis-body">
+          Activity 기준 분석에서 ECP 계열 레벨에서 상대 참여율이 눈에 띄게 높게 나타난 콘텐츠는 아래와 같습니다.
+          <ul>
+            <li>디자인이 단순하고</li>
+            <li>클릭, 드래그, 발화 중심의 직관적인 인터랙션으로 구성되어 있으며</li>
+            <li>쉬운 문제 위주 또는 힌트를 통해 정답 유추가 가능한 구조를 가지고 있습니다.</li>
+          </ul>
+          따라서 저레벨 학습자도 부담 없이 접근 가능한 콘텐츠로 판단됩니다.
+        </div>
+        <div class="synthesis-sub">주요 콘텐츠</div>
+        <ol class="synthesis-ol">
+          <li>Chef's Chat Kitchen</li>
+          <li>Scoop Up!</li>
+          <li>What's Your Animal Type?</li>
+          <li>Fuel Your Word</li>
+          <li>Clue Catcher</li>
+          <li>Avatar Amigo</li>
+          <li>Animal Explorer</li>
+          <li>Picture Perfect Words</li>
+        </ol>
+      </article>
+
+      <article class="synthesis-card t-tech">
+        <div class="synthesis-card-head">4. 기술 개선 우선 콘텐츠</div>
+        <span class="synthesis-card-tag">인식·조작 오류 · 만족도</span>
+        <div class="synthesis-body">
+          아래 4개 콘텐츠는 레벨 적합성보다 인식 및 조작 오류가 사용자 만족도 저하의 핵심 원인으로 확인되었습니다.
+          <ul>
+            <li>마이크 인식 오류</li>
+            <li>터치/조작 인식 문제</li>
+            <li>진행 흐름 오류</li>
+            <li>반응 속도 문제</li>
+          </ul>
+          따라서 현재 단계에서는 추천 콘텐츠로 분류하기보다, 기술 개선 이후 재평가가 필요한 콘텐츠로 판단됩니다.
+        </div>
+        <div class="synthesis-sub">대상 콘텐츠</div>
+        <ol class="synthesis-ol">
+          <li>Word Punch!</li>
+          <li>Ghost Buster</li>
+          <li>Volcano Blaster</li>
+          <li>Rescue the Princess</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <!-- SYNTHESIS: 종합 의견 -->
+  <section class="section" id="synthesis-verdict-section">
+    <div class="section-head">
+      <h2>종합 의견</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="synthesis-verdict-card">
+      <p class="synthesis-verdict-p v-high">고레벨(GT ~ Leaders / MAG · MGT 계열)에서는 UI 디자인이 비교적 복잡하고 동작 프로세스가 단순하지 않으며, 문법·추론·쓰기·말하기 등 난이도가 있는 문제가 포함된 콘텐츠에서 높은 참여율이 나타났습니다.</p>
+      <p class="synthesis-verdict-p v-mid">중간레벨(ECP 후반 ~ GT / Honors 계열)에서는 다양한 난이도의 문제가 균형 있게 제시되고, UI 디자인과 동작 프로세스가 직관적이고 단순한 콘텐츠에서 전반적으로 고른 참여율이 확인되었습니다.</p>
+      <p class="synthesis-verdict-p v-low">저레벨(ECP 계열)에서는 디자인이 단순하고 클릭·드래그·발화 중심의 직관적인 인터랙션으로 구성되어 있으며, 쉬운 문제 또는 힌트를 통해 접근 가능한 콘텐츠에서 높은 참여율이 나타났습니다.</p>
+    </div>
   </section>
 
 </main>
