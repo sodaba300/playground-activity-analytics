@@ -363,10 +363,6 @@
   .selected-activity-summary{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.9rem 1rem;margin-bottom:1rem}
   .selected-activity-summary .summary-main{font-size:15px;font-weight:600;color:var(--text)}
   .selected-activity-summary .summary-sub{font-size:12px;color:var(--text2);margin-top:3px;font-family:'DM Mono',monospace}
-  .activity-chart-mode-toggle{display:flex;gap:6px;margin-bottom:1rem}
-  .activity-chart-mode-btn{padding:5px 12px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-size:12px;font-family:'Pretendard',sans-serif;cursor:pointer;transition:all 0.15s}
-  .activity-chart-mode-btn:hover{background:var(--bg3);color:var(--text)}
-  .activity-chart-mode-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
   .level-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;max-height:160px;overflow-y:auto}
   .level-tabs::-webkit-scrollbar{width:4px}.level-tabs::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
   .level-tab{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-size:12px;font-family:'Pretendard',sans-serif;cursor:pointer;transition:all 0.15s;white-space:nowrap}
@@ -694,15 +690,11 @@
     <div class="chart-card">
       <div class="chart-title">
         <span class="dot" style="background:var(--accent)"></span>
-        <span id="activityLevelChartTitleText">선택 Activity의 레벨별 사용자 수</span>
+        선택 Activity의 레벨별 사용자 수
       </div>
 
       <div class="level-activity-tabs" id="levelActivityTabs"></div>
       <div class="selected-activity-summary" id="selectedActivitySummary"></div>
-      <div class="activity-chart-mode-toggle" id="activityChartModeToggle">
-        <button class="activity-chart-mode-btn active" data-activity-chart-mode="count" type="button" onclick="setActivityChartMode('count')">사용자 수</button>
-        <button class="activity-chart-mode-btn" data-activity-chart-mode="rate" type="button" onclick="setActivityChartMode('rate')">상대 참여율</button>
-      </div>
 
       <div style="position:relative;height:420px;">
         <canvas id="activityLevelBarChart" role="img" aria-label="선택 Activity 레벨별 사용자 수 차트">선택 Activity 레벨별 사용자 수 차트</canvas>
@@ -2411,25 +2403,8 @@ const levelOrder = ["ECP5","ECP6","ECP6m","ECP7","ECP7i","ECP7m","GT1","GT2","GT
 const activityLevelData = {"Animal Explorer":{"total":6171,"levels":{"ECP5":249,"ECP6":584,"ECP6m":159,"ECP7":806,"ECP7i":136,"ECP7m":209,"GT1":461,"GT2":314,"GT3":134,"GT4":17,"Honors 1":22,"Honors 2":49,"Honors 3":103,"Leaders 1":48,"Leaders 2":11,"Leaders 3":1,"LX A":17,"LX B":11,"LX C":21,"LX D":0,"LX E":62,"S1":535,"MAG2":406,"MAG1":379,"S2":321,"MAG3":244,"MGT1":301,"MGT2":208,"S3":157,"MGT3":115,"MAG4":44,"S4":21,"MGT4":20,"SSPC":5,"SSPD":1}},"Avatar Amigo":{"total":7314,"levels":{"ECP5":317,"ECP6":628,"ECP6m":191,"ECP7":861,"ECP7i":166,"ECP7m":215,"GT1":500,"GT2":377,"GT3":172,"GT4":31,"Honors 1":33,"Honors 2":77,"Honors 3":141,"Leaders 1":92,"Leaders 2":36,"Leaders 3":9,"LX A":28,"LX B":13,"LX C":24,"LX D":0,"LX E":84,"S1":601,"MAG2":485,"MAG1":423,"S2":394,"MAG3":323,"MGT1":344,"MGT2":243,"S3":197,"MGT3":156,"MAG4":87,"S4":36,"MGT4":23,"SSPC":7,"SSPD":0}},"Birthday Invitation Maker":{"total":6017,"levels":{"ECP5":214,"ECP6":523,"ECP6m":145,"ECP7":780,"ECP7i":134,"ECP7m":196,"GT1":416,"GT2":296,"GT3":128,"GT4":23,"Honors 1":25,"Honors 2":56,"Honors 3":110,"Leaders 1":67,"Leaders 2":19,"Leaders 3":3,"LX A":14,"LX B":13,"LX C":22,"LX D":0,"LX E":47,"S1":507,"MAG2":408,"MAG1":401,"S2":340,"MAG3":265,"MGT1":275,"MGT2":204,"S3":169,"MGT3":110,"MAG4":61,"S4":23,"MGT4":19,"SSPC":4,"SSPD":0}},"Chef's Chat Kitchen":{"total":10665,"levels":{"ECP5":468,"ECP6":836,"ECP6m":259,"ECP7":1158,"ECP7i":226,"ECP7m":321,"GT1":741,"GT2":587,"GT3":294,"GT4":46,"Honors 1":62,"Honors 2":132,"Honors 3":261,"Leaders 1":191,"Leaders 2":62,"Leaders 3":15,"LX A":43,"LX B":27,"LX C":44,"LX D":0,"LX E":130,"S1":844,"MAG2":655,"MAG1":571,"S2":561,"MAG3":471,"MGT1":477,"MGT2":399,"S3":322,"MGT3":222,"MAG4":128,"S4":58,"MGT4":43,"SSPC":10,"SSPD":1}},"Clue Catcher":{"total":7490,"levels":{"ECP5":296,"ECP6":632,"ECP6m":183,"ECP7":890,"ECP7i":166,"ECP7m":225,"GT1":511,"GT2":391,"GT3":199,"GT4":27,"Honors 1":36,"Honors 2":70,"Honors 3":148,"Leaders 1":88,"Leaders 2":20,"Leaders 3":7,"LX A":24,"LX B":13,"LX C":26,"LX D":1,"LX E":78,"S1":615,"MAG2":495,"MAG1":463,"S2":399,"MAG3":333,"MGT1":367,"MGT2":284,"S3":207,"MGT3":150,"MAG4":76,"S4":39,"MGT4":24,"SSPC":6,"SSPD":1}},"Emoji Story Chain":{"total":3178,"levels":{"ECP5":44,"ECP6":145,"ECP6m":37,"ECP7":315,"ECP7i":36,"ECP7m":115,"GT1":181,"GT2":195,"GT3":111,"GT4":24,"Honors 1":19,"Honors 2":41,"Honors 3":94,"Leaders 1":68,"Leaders 2":12,"Leaders 3":2,"LX A":13,"LX B":1,"LX C":9,"LX D":0,"LX E":50,"S1":275,"MAG2":263,"MAG1":162,"S2":202,"MAG3":187,"MGT1":131,"MGT2":148,"S3":120,"MGT3":87,"MAG4":47,"S4":24,"MGT4":20,"SSPC":0,"SSPD":0}},"Escape the Mystery Room":{"total":8157,"levels":{"ECP5":295,"ECP6":658,"ECP6m":193,"ECP7":939,"ECP7i":172,"ECP7m":230,"GT1":534,"GT2":409,"GT3":214,"GT4":37,"Honors 1":45,"Honors 2":95,"Honors 3":187,"Leaders 1":128,"Leaders 2":51,"Leaders 3":10,"LX A":29,"LX B":23,"LX C":23,"LX D":0,"LX E":80,"S1":690,"MAG2":556,"MAG1":477,"S2":432,"MAG3":389,"MGT1":370,"MGT2":306,"S3":237,"MGT3":164,"MAG4":104,"S4":43,"MGT4":30,"SSPC":6,"SSPD":1}},"Find Your Hero":{"total":662,"levels":{"ECP5":10,"ECP6":40,"ECP6m":11,"ECP7":96,"ECP7i":9,"ECP7m":21,"GT1":35,"GT2":42,"GT3":20,"GT4":5,"Honors 1":4,"Honors 2":8,"Honors 3":13,"Leaders 1":6,"Leaders 2":1,"Leaders 3":0,"LX A":2,"LX B":0,"LX C":1,"LX D":0,"LX E":11,"S1":61,"MAG2":49,"MAG1":45,"S2":36,"MAG3":49,"MGT1":23,"MGT2":27,"S3":13,"MGT3":12,"MAG4":4,"S4":4,"MGT4":4,"SSPC":0,"SSPD":0}},"Fuel Your Word":{"total":7393,"levels":{"ECP5":329,"ECP6":664,"ECP6m":200,"ECP7":889,"ECP7i":171,"ECP7m":225,"GT1":539,"GT2":407,"GT3":184,"GT4":23,"Honors 1":36,"Honors 2":76,"Honors 3":141,"Leaders 1":87,"Leaders 2":33,"Leaders 3":6,"LX A":22,"LX B":17,"LX C":27,"LX D":0,"LX E":95,"S1":604,"MAG2":461,"MAG1":420,"S2":388,"MAG3":298,"MGT1":348,"MGT2":252,"S3":186,"MGT3":137,"MAG4":68,"S4":29,"MGT4":22,"SSPC":8,"SSPD":1}},"Ghost Buster":{"total":2185,"levels":{"ECP5":46,"ECP6":127,"ECP6m":41,"ECP7":207,"ECP7i":50,"ECP7m":48,"GT1":170,"GT2":150,"GT3":86,"GT4":18,"Honors 1":14,"Honors 2":34,"Honors 3":71,"Leaders 1":70,"Leaders 2":25,"Leaders 3":5,"LX A":7,"LX B":3,"LX C":4,"LX D":0,"LX E":26,"S1":162,"MAG2":128,"MAG1":98,"S2":122,"MAG3":110,"MGT1":102,"MGT2":102,"S3":61,"MGT3":55,"MAG4":28,"S4":9,"MGT4":5,"SSPC":1,"SSPD":0}},"Magic Fortune English":{"total":3889,"levels":{"ECP5":58,"ECP6":196,"ECP6m":51,"ECP7":419,"ECP7i":47,"ECP7m":142,"GT1":216,"GT2":225,"GT3":115,"GT4":26,"Honors 1":27,"Honors 2":45,"Honors 3":117,"Leaders 1":70,"Leaders 2":18,"Leaders 3":3,"LX A":24,"LX B":2,"LX C":16,"LX D":1,"LX E":69,"S1":361,"MAG2":303,"MAG1":189,"S2":239,"MAG3":247,"MGT1":156,"MGT2":174,"S3":131,"MGT3":98,"MAG4":55,"S4":31,"MGT4":18,"SSPC":0,"SSPD":0}},"Magic Word World":{"total":3373,"levels":{"ECP5":39,"ECP6":139,"ECP6m":36,"ECP7":325,"ECP7i":32,"ECP7m":114,"GT1":195,"GT2":214,"GT3":107,"GT4":24,"Honors 1":27,"Honors 2":43,"Honors 3":109,"Leaders 1":82,"Leaders 2":19,"Leaders 3":4,"LX A":12,"LX B":1,"LX C":9,"LX D":0,"LX E":53,"S1":304,"MAG2":273,"MAG1":172,"S2":206,"MAG3":195,"MGT1":140,"MGT2":167,"S3":136,"MGT3":95,"MAG4":51,"S4":27,"MGT4":23,"SSPC":0,"SSPD":0}},"News Creator":{"total":5538,"levels":{"ECP5":177,"ECP6":461,"ECP6m":124,"ECP7":727,"ECP7i":118,"ECP7m":160,"GT1":350,"GT2":258,"GT3":126,"GT4":17,"Honors 1":16,"Honors 2":43,"Honors 3":107,"Leaders 1":58,"Leaders 2":14,"Leaders 3":2,"LX A":12,"LX B":7,"LX C":18,"LX D":0,"LX E":53,"S1":474,"MAG2":422,"MAG1":391,"S2":311,"MAG3":257,"MGT1":254,"MGT2":222,"S3":150,"MGT3":113,"MAG4":50,"S4":23,"MGT4":18,"SSPC":5,"SSPD":0}},"Picture Perfect Words":{"total":4783,"levels":{"ECP5":182,"ECP6":430,"ECP6m":119,"ECP7":627,"ECP7i":108,"ECP7m":162,"GT1":311,"GT2":231,"GT3":113,"GT4":20,"Honors 1":16,"Honors 2":35,"Honors 3":78,"Leaders 1":46,"Leaders 2":10,"Leaders 3":5,"LX A":9,"LX B":8,"LX C":12,"LX D":0,"LX E":46,"S1":420,"MAG2":342,"MAG1":320,"S2":252,"MAG3":202,"MGT1":242,"MGT2":166,"S3":113,"MGT3":84,"MAG4":43,"S4":16,"MGT4":13,"SSPC":2,"SSPD":0}},"Rescue the Princess":{"total":7722,"levels":{"ECP5":263,"ECP6":607,"ECP6m":181,"ECP7":873,"ECP7i":163,"ECP7m":231,"GT1":561,"GT2":435,"GT3":209,"GT4":33,"Honors 1":40,"Honors 2":64,"Honors 3":163,"Leaders 1":93,"Leaders 2":24,"Leaders 3":3,"LX A":26,"LX B":13,"LX C":24,"LX D":0,"LX E":93,"S1":633,"MAG2":514,"MAG1":436,"S2":429,"MAG3":374,"MGT1":364,"MGT2":329,"S3":221,"MGT3":165,"MAG4":95,"S4":27,"MGT4":29,"SSPC":7,"SSPD":0}},"Scoop Up!":{"total":9670,"levels":{"ECP5":483,"ECP6":802,"ECP6m":257,"ECP7":1077,"ECP7i":224,"ECP7m":285,"GT1":698,"GT2":528,"GT3":265,"GT4":46,"Honors 1":50,"Honors 2":114,"Honors 3":190,"Leaders 1":138,"Leaders 2":44,"Leaders 3":8,"LX A":40,"LX B":22,"LX C":39,"LX D":1,"LX E":118,"S1":768,"MAG2":579,"MAG1":529,"S2":493,"MAG3":394,"MGT1":438,"MGT2":372,"S3":273,"MGT3":191,"MAG4":111,"S4":45,"MGT4":38,"SSPC":9,"SSPD":1}},"Sell It!":{"total":7050,"levels":{"ECP5":231,"ECP6":560,"ECP6m":165,"ECP7":834,"ECP7i":138,"ECP7m":195,"GT1":489,"GT2":360,"GT3":168,"GT4":28,"Honors 1":37,"Honors 2":77,"Honors 3":169,"Leaders 1":94,"Leaders 2":29,"Leaders 3":6,"LX A":19,"LX B":12,"LX C":23,"LX D":0,"LX E":74,"S1":582,"MAG2":478,"MAG1":437,"S2":388,"MAG3":329,"MGT1":349,"MGT2":272,"S3":195,"MGT3":159,"MAG4":82,"S4":40,"MGT4":25,"SSPC":5,"SSPD":1}},"Story Builder":{"total":6410,"levels":{"ECP5":236,"ECP6":554,"ECP6m":151,"ECP7":834,"ECP7i":147,"ECP7m":193,"GT1":415,"GT2":318,"GT3":135,"GT4":29,"Honors 1":23,"Honors 2":54,"Honors 3":131,"Leaders 1":69,"Leaders 2":18,"Leaders 3":4,"LX A":16,"LX B":12,"LX C":23,"LX D":0,"LX E":68,"S1":516,"MAG2":441,"MAG1":422,"S2":347,"MAG3":278,"MGT1":316,"MGT2":237,"S3":187,"MGT3":119,"MAG4":66,"S4":29,"MGT4":19,"SSPC":3,"SSPD":0}},"This is Me!":{"total":6410,"levels":{"ECP5":234,"ECP6":512,"ECP6m":154,"ECP7":780,"ECP7i":130,"ECP7m":189,"GT1":427,"GT2":316,"GT3":145,"GT4":20,"Honors 1":30,"Honors 2":56,"Honors 3":134,"Leaders 1":74,"Leaders 2":19,"Leaders 3":3,"LX A":18,"LX B":11,"LX C":17,"LX D":0,"LX E":58,"S1":548,"MAG2":466,"MAG1":399,"S2":369,"MAG3":288,"MGT1":292,"MGT2":265,"S3":194,"MGT3":138,"MAG4":67,"S4":30,"MGT4":20,"SSPC":7,"SSPD":0}},"Treasure Hunter":{"total":4244,"levels":{"ECP5":69,"ECP6":232,"ECP6m":53,"ECP7":437,"ECP7i":56,"ECP7m":155,"GT1":252,"GT2":254,"GT3":134,"GT4":28,"Honors 1":22,"Honors 2":57,"Honors 3":111,"Leaders 1":69,"Leaders 2":20,"Leaders 3":4,"LX A":28,"LX B":3,"LX C":22,"LX D":0,"LX E":80,"S1":383,"MAG2":318,"MAG1":197,"S2":262,"MAG3":264,"MGT1":175,"MGT2":197,"S3":150,"MGT3":113,"MAG4":48,"S4":29,"MGT4":22,"SSPC":0,"SSPD":0}},"Voice Actor":{"total":3195,"levels":{"ECP5":50,"ECP6":169,"ECP6m":35,"ECP7":361,"ECP7i":37,"ECP7m":125,"GT1":163,"GT2":169,"GT3":86,"GT4":23,"Honors 1":18,"Honors 2":39,"Honors 3":90,"Leaders 1":49,"Leaders 2":15,"Leaders 3":3,"LX A":15,"LX B":2,"LX C":15,"LX D":0,"LX E":60,"S1":295,"MAG2":263,"MAG1":154,"S2":204,"MAG3":209,"MGT1":126,"MGT2":144,"S3":109,"MGT3":88,"MAG4":42,"S4":23,"MGT4":14,"SSPC":0,"SSPD":0}},"Volcano Blaster":{"total":2571,"levels":{"ECP5":54,"ECP6":133,"ECP6m":46,"ECP7":241,"ECP7i":60,"ECP7m":55,"GT1":190,"GT2":175,"GT3":89,"GT4":23,"Honors 1":25,"Honors 2":57,"Honors 3":93,"Leaders 1":97,"Leaders 2":36,"Leaders 3":14,"LX A":11,"LX B":3,"LX C":6,"LX D":0,"LX E":31,"S1":182,"MAG2":154,"MAG1":111,"S2":132,"MAG3":127,"MGT1":122,"MGT2":105,"S3":74,"MGT3":59,"MAG4":44,"S4":13,"MGT4":7,"SSPC":2,"SSPD":0}},"What's Your Animal Type?":{"total":8708,"levels":{"ECP5":323,"ECP6":708,"ECP6m":195,"ECP7":967,"ECP7i":172,"ECP7m":263,"GT1":618,"GT2":472,"GT3":241,"GT4":33,"Honors 1":41,"Honors 2":100,"Honors 3":196,"Leaders 1":133,"Leaders 2":39,"Leaders 3":5,"LX A":30,"LX B":17,"LX C":30,"LX D":0,"LX E":96,"S1":702,"MAG2":586,"MAG1":496,"S2":472,"MAG3":394,"MGT1":396,"MGT2":346,"S3":256,"MGT3":191,"MAG4":104,"S4":45,"MGT4":33,"SSPC":7,"SSPD":1}},"Word Punch!":{"total":5737,"levels":{"ECP5":206,"ECP6":468,"ECP6m":127,"ECP7":725,"ECP7i":118,"ECP7m":168,"GT1":392,"GT2":285,"GT3":122,"GT4":26,"Honors 1":23,"Honors 2":56,"Honors 3":124,"Leaders 1":69,"Leaders 2":24,"Leaders 3":7,"LX A":15,"LX B":11,"LX C":21,"LX D":0,"LX E":54,"S1":498,"MAG2":407,"MAG1":371,"S2":307,"MAG3":248,"MGT1":281,"MGT2":221,"S3":144,"MGT3":114,"MAG4":57,"S4":24,"MGT4":19,"SSPC":5,"SSPD":0}}};
 let activityLevelBarChart = null;
 let selectedActivityName = null;
-let activityChartMode = 'count';
-const RATE_MIN_LEVEL_TOTAL = 100;
 let levelActivityBarChart = null;
 let selectedLevelName = null;
-const levelTotalMap = levelUserOverviewData.reduce(function(acc, item) {
-  acc[item.level] = Number(item.userCount || 0);
-  return acc;
-}, {});
-
-function setActivityChartMode(mode) {
-  activityChartMode = mode;
-  document.querySelectorAll('.activity-chart-mode-btn').forEach(function(btn) {
-    btn.classList.toggle('active', btn.dataset.activityChartMode === mode);
-  });
-  if (selectedActivityName) {
-    updateSelectedActivitySummary(selectedActivityName);
-    renderActivityLevelBarChart(selectedActivityName);
-  }
-}
 
 function renderActivityLevelTabs() {
   const tabWrap = document.getElementById('levelActivityTabs');
@@ -2477,48 +2452,18 @@ function updateSelectedActivitySummary(activityName) {
   });
 
   const total = values.reduce(function(sum, item) { return sum + item.count; }, 0);
-  const rateValues = values.map(function(item) {
-    const levelTotal = Number(levelTotalMap[item.level] || 0);
-    return {
-      level: item.level,
-      count: item.count,
-      levelTotal: levelTotal,
-      rate: levelTotal > 0 ? (item.count / levelTotal) * 100 : 0
-    };
-  });
   const sorted = [...values].sort(function(a, b) { return b.count - a.count; });
   const topLevel = sorted[0] || { level: '-', count: 0 };
   const top3Total = sorted.slice(0, 3).reduce(function(sum, item) { return sum + item.count; }, 0);
   const top3Pct = total > 0 ? ((top3Total / total) * 100).toFixed(1) : '0.0';
-  const top3Text = sorted.slice(0, 3).map(function(item, idx) {
+  const top5Text = sorted.slice(0, 5).map(function(item, idx) {
     const pct = total > 0 ? ((item.count / total) * 100).toFixed(1) : '0.0';
     return '상위' + (idx + 1) + ' : ' + item.level + ', 레벨비중 : ' + pct + '%';
   }).join('<br>');
-  const bottom3Text = [...sorted].reverse().slice(0, 3).map(function(item, idx) {
-    const pct = total > 0 ? ((item.count / total) * 100).toFixed(1) : '0.0';
-    return '하위' + (idx + 1) + ' : ' + item.level + ', 레벨비중 : ' + pct + '%';
-  }).join('<br>');
-
-  if (activityChartMode === 'rate') {
-    const eligibleRateValues = rateValues.filter(function(item) { return item.levelTotal >= RATE_MIN_LEVEL_TOTAL; });
-    const sortedByRate = [...eligibleRateValues].sort(function(a, b) { return b.rate - a.rate; });
-    const topRate = sortedByRate[0] || { level: '-', rate: 0 };
-    const top3RateText = sortedByRate.slice(0, 3).map(function(item, idx) {
-      return '상위' + (idx + 1) + ' : ' + item.level + ', 상대참여율 : ' + item.rate.toFixed(1) + '%';
-    }).join('<br>');
-    const bottom3RateText = [...sortedByRate].reverse().slice(0, 3).map(function(item, idx) {
-      return '하위' + (idx + 1) + ' : ' + item.level + ', 상대참여율 : ' + item.rate.toFixed(1) + '%';
-    }).join('<br>');
-    summaryEl.innerHTML =
-      '<div class=\"summary-main\">' + activityName + '</div>' +
-      '<div class=\"summary-sub\">' + '상대 참여율은 레벨 전체 사용자 수가 100명 이상인 레벨만 계산합니다.' + '</div>' +
-      '<div class=\"summary-sub\">총 사용자 ' + total.toLocaleString() + '명 · 상대 참여율 1위 ' + topRate.level + ' ' + topRate.rate.toFixed(1) + '% · 레벨 전체 100명 미만은 표본 부족으로 제외<br>' + top3RateText + '<br>' + bottom3RateText + '</div>';
-    return;
-  }
 
   summaryEl.innerHTML =
     '<div class=\"summary-main\">' + activityName + '</div>' +
-    '<div class=\"summary-sub\">총 사용자 ' + total.toLocaleString() + '명 · 대표 레벨 ' + topLevel.level + ' · 상위 3개 레벨 비중 ' + top3Pct + '%<br>' + top3Text + '<br>' + bottom3Text + '</div>';
+    '<div class=\"summary-sub\">총 사용자 ' + total.toLocaleString() + '명 · 대표 레벨 ' + topLevel.level + ' · 상위 3개 레벨 비중 ' + top3Pct + '%<br>' + top5Text + '</div>';
 }
 
 function renderActivityLevelBarChart(activityName) {
@@ -2529,50 +2474,27 @@ function renderActivityLevelBarChart(activityName) {
   const ctx = canvas.getContext('2d');
   const labels = levelOrder;
   const counts = labels.map(function(level) { return Number(activity.levels[level] || 0); });
-  const levelTotals = labels.map(function(level) { return Number(levelTotalMap[level] || 0); });
-  const totalActivityUsers = counts.reduce(function(sum, value) { return sum + value; }, 0);
-  const rates = labels.map(function(level, index) {
-    const levelTotal = levelTotals[index];
-    if (levelTotal < RATE_MIN_LEVEL_TOTAL) return 0;
-    return levelTotal > 0 ? (counts[index] / levelTotal) * 100 : 0;
-  });
-  const values = activityChartMode === 'rate' ? rates : counts;
-  const rankedSource = values
+  const total = counts.reduce(function(sum, value) { return sum + value; }, 0);
+  const rankedIdx = counts
     .map(function(value, idx) { return { value: value, idx: idx }; })
-    .filter(function(item) {
-      if (activityChartMode !== 'rate') return true;
-      return levelTotals[item.idx] >= RATE_MIN_LEVEL_TOTAL;
-    });
-  const sortedRanked = [...rankedSource].sort(function(a, b) { return b.value - a.value; });
-  const rankedIdx = sortedRanked
-    .slice(0, 3)
-    .map(function(item) { return item.idx; });
-  const bottomIdx = [...sortedRanked]
-    .reverse()
+    .sort(function(a, b) { return b.value - a.value; })
     .slice(0, 3)
     .map(function(item) { return item.idx; });
 
-  const backgroundColors = values.map(function(value, idx) {
-    if (activityChartMode === 'rate' && levelTotals[idx] < RATE_MIN_LEVEL_TOTAL) return 'rgba(107, 114, 128, 0.55)';
-    if (value <= 0) return activityChartMode === 'rate' ? 'rgba(96, 165, 250, 0.75)' : 'rgba(45, 212, 191, 0.85)';
-    if (rankedIdx.indexOf(idx) >= 0) return activityChartMode === 'rate' ? 'rgba(251, 191, 36, 0.95)' : 'rgba(108, 127, 255, 0.95)';
-    if (bottomIdx.indexOf(idx) >= 0) return 'rgba(248, 113, 113, 0.9)';
-    return activityChartMode === 'rate' ? 'rgba(96, 165, 250, 0.75)' : 'rgba(45, 212, 191, 0.85)';
+  const backgroundColors = counts.map(function(value, idx) {
+    if (value <= 0) return 'rgba(45, 212, 191, 0.85)';
+    if (idx === rankedIdx[0]) return 'rgba(108, 127, 255, 0.95)';
+    if (idx === rankedIdx[1]) return 'rgba(167, 139, 250, 0.95)';
+    if (idx === rankedIdx[2]) return 'rgba(251, 191, 36, 0.95)';
+    return 'rgba(45, 212, 191, 0.85)';
   });
-  const borderColors = values.map(function(value, idx) {
-    if (activityChartMode === 'rate' && levelTotals[idx] < RATE_MIN_LEVEL_TOTAL) return '#6b7280';
-    if (value <= 0) return activityChartMode === 'rate' ? '#60a5fa' : '#2dd4bf';
-    if (rankedIdx.indexOf(idx) >= 0) return activityChartMode === 'rate' ? '#fbbf24' : '#6c7fff';
-    if (bottomIdx.indexOf(idx) >= 0) return '#f87171';
-    return activityChartMode === 'rate' ? '#60a5fa' : '#2dd4bf';
+  const borderColors = counts.map(function(value, idx) {
+    if (value <= 0) return '#2dd4bf';
+    if (idx === rankedIdx[0]) return '#6c7fff';
+    if (idx === rankedIdx[1]) return '#a78bfa';
+    if (idx === rankedIdx[2]) return '#fbbf24';
+    return '#2dd4bf';
   });
-
-  var chartTitle = document.getElementById('activityLevelChartTitleText');
-  if (chartTitle) {
-    chartTitle.textContent = activityChartMode === 'rate'
-      ? '선택 Activity의 레벨별 상대 참여율'
-      : '선택 Activity의 레벨별 사용자 수';
-  }
 
   if (activityLevelBarChart) activityLevelBarChart.destroy();
 
@@ -2581,8 +2503,8 @@ function renderActivityLevelBarChart(activityName) {
     data: {
       labels,
       datasets: [{
-        label: activityChartMode === 'rate' ? '상대 참여율' : '사용자 수',
-        data: values,
+        label: '사용자 수',
+        data: counts,
         backgroundColor: backgroundColors,
         borderColor: borderColors,
         borderWidth: 1,
@@ -2604,28 +2526,9 @@ function renderActivityLevelBarChart(activityName) {
           callbacks: {
             title: function(context) { return '레벨: ' + context[0].label; },
             label: function(context) {
-              const level = context.label;
-              const index = context.dataIndex;
-              const count = counts[index];
-              const levelTotal = levelTotals[index];
-              const activityShare = totalActivityUsers > 0 ? ((count / totalActivityUsers) * 100).toFixed(1) : '0.0';
-              const rate = levelTotal > 0 ? ((count / levelTotal) * 100).toFixed(1) : '0.0';
-              if (activityChartMode === 'rate') {
-                if (levelTotal < RATE_MIN_LEVEL_TOTAL) {
-                  return [
-                    'Activity 사용자 수: ' + count.toLocaleString() + '명',
-                    '레벨 전체 사용자 수: ' + levelTotal.toLocaleString() + '명',
-                    '표본 부족(100명 미만)으로 상대 참여율 제외'
-                  ];
-                }
-                return [
-                  'Activity 사용자 수: ' + count.toLocaleString() + '명',
-                  '레벨 전체 사용자 수: ' + levelTotal.toLocaleString() + '명',
-                  '상대 참여율: ' + rate + '%'
-                ];
-              }
               const value = Number(context.raw || 0);
-              return ['사용자 수: ' + value.toLocaleString() + '명', '해당 Activity 내 비중: ' + activityShare + '%'];
+              const pct = total > 0 ? ((value / total) * 100).toFixed(1) : '0.0';
+              return ['사용자 수: ' + value.toLocaleString() + '명', '비율: ' + pct + '%'];
             }
           }
         }
@@ -2640,10 +2543,7 @@ function renderActivityLevelBarChart(activityName) {
           grid: { color: 'rgba(255,255,255,0.05)' },
           ticks: {
             color: '#8b90a0',
-            callback: function(value) {
-              if (activityChartMode === 'rate') return Number(value).toFixed(1) + '%';
-              return Number(value).toLocaleString();
-            }
+            callback: function(value) { return Number(value).toLocaleString(); }
           }
         }
       }
@@ -2721,18 +2621,10 @@ function updateSelectedLevelSummary(levelName) {
   const topActivity = entries[0] || { activity: '-', count: 0 };
   const top3Total = entries.slice(0, 3).reduce(function(sum, item) { return sum + item.count; }, 0);
   const top3Pct = total > 0 ? ((top3Total / total) * 100).toFixed(1) : '0.0';
-  const top3Text = entries.slice(0, 3).map(function(item, idx) {
-    const pct = total > 0 ? ((item.count / total) * 100).toFixed(1) : '0.0';
-    return '상위' + (idx + 1) + ' : ' + item.activity + ', 비중 : ' + pct + '%';
-  }).join('<br>');
-  const bottom3Text = [...entries].reverse().slice(0, 3).map(function(item, idx) {
-    const pct = total > 0 ? ((item.count / total) * 100).toFixed(1) : '0.0';
-    return '하위' + (idx + 1) + ' : ' + item.activity + ', 비중 : ' + pct + '%';
-  }).join('<br>');
 
   summaryEl.innerHTML =
     '<div class=\"summary-main\">' + levelName + '</div>' +
-    '<div class=\"summary-sub\">총 사용자 ' + total.toLocaleString() + '명 · 최다 사용 Activity ' + topActivity.activity + ' · 상위 3개 Activity 비중 ' + top3Pct + '%<br>' + top3Text + '<br>' + bottom3Text + '</div>';
+    '<div class=\"summary-sub\">총 사용자 ' + total.toLocaleString() + '명 · 최다 사용 Activity ' + topActivity.activity + ' · 상위 3개 Activity 비중 ' + top3Pct + '%</div>';
 }
 
 function renderLevelActivityBarChart(levelName) {
@@ -2749,27 +2641,24 @@ function renderLevelActivityBarChart(levelName) {
   const labels = entries.map(function(item) { return item.activity; });
   const counts = entries.map(function(item) { return item.count; });
   const total = counts.reduce(function(sum, value) { return sum + value; }, 0);
-  const sortedRanked = counts
+  const rankedIdx = counts
     .map(function(value, idx) { return { value: value, idx: idx }; })
-    .sort(function(a, b) { return b.value - a.value; });
-  const rankedIdx = sortedRanked
-    .slice(0, 3)
-    .map(function(item) { return item.idx; });
-  const bottomIdx = [...sortedRanked]
-    .reverse()
+    .sort(function(a, b) { return b.value - a.value; })
     .slice(0, 3)
     .map(function(item) { return item.idx; });
 
   const backgroundColors = counts.map(function(value, idx) {
     if (value <= 0) return 'rgba(45, 212, 191, 0.85)';
-    if (rankedIdx.indexOf(idx) >= 0) return 'rgba(167, 139, 250, 0.95)';
-    if (bottomIdx.indexOf(idx) >= 0) return 'rgba(248, 113, 113, 0.9)';
+    if (idx === rankedIdx[0]) return 'rgba(167, 139, 250, 0.95)';
+    if (idx === rankedIdx[1]) return 'rgba(108, 127, 255, 0.95)';
+    if (idx === rankedIdx[2]) return 'rgba(251, 191, 36, 0.95)';
     return 'rgba(45, 212, 191, 0.85)';
   });
   const borderColors = counts.map(function(value, idx) {
     if (value <= 0) return '#2dd4bf';
-    if (rankedIdx.indexOf(idx) >= 0) return '#a78bfa';
-    if (bottomIdx.indexOf(idx) >= 0) return '#f87171';
+    if (idx === rankedIdx[0]) return '#a78bfa';
+    if (idx === rankedIdx[1]) return '#6c7fff';
+    if (idx === rankedIdx[2]) return '#fbbf24';
     return '#2dd4bf';
   });
 
